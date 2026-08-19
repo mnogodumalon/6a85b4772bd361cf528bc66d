@@ -1,0 +1,186 @@
+{
+  "appgroup_id": "6a85b4772bd361cf528bc66d",
+  "appgroup_name": "Salon-Terminplaner",
+  "apps": {
+    "verfuegbare_termine": {
+      "app_id": "6a85b4674f059d5c7d13e874",
+      "name": "Verfügbare Termine",
+      "main": false,
+      "controls": {
+        "datum_uhrzeit": {
+          "identifier": "datum_uhrzeit",
+          "label": "Datum und Uhrzeit",
+          "type": "date",
+          "subtype": "datetimeminute",
+          "fulltype": "date/datetimeminute",
+          "description": "A specific moment in time consisting of year, month, day, hour and minute (or `null`/`None`)\n\nThe field value will be a string in the format `<YYYY>-<MM>-<DD>T<HH>:<MM>` (or `null`/`None`).\n\nFor example: `2000-02-29T11:30`.\n\nFor `POST`/`PUT`/`PATCH` requests the REST API uses a liberal parsing approach so that strings like `2026`, `February 29, 2000 12:34 MEST`, `letztes Jahr` etc. will be accepted as value datetime values. However this runs the risk of parsing ambiguous values incorrectly. To ensure reliable parsing it is best to use the canonical format specified above.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "stuhl": {
+          "identifier": "stuhl",
+          "label": "Stuhl",
+          "type": "lookup",
+          "subtype": "radio",
+          "fulltype": "lookup/radio",
+          "description": "One selected option of multiple available options (or `null`/`None`).\n\nThe available options are defined in the `lookup_data` attribute of this control.\n\nThe field value will be the key in this `lookup_data` attribute (or `null`/`None`).\n\nDisplayed as radio button fields in HTML pages.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "lookup_data": {
+            "stuhl_1": "Stuhl 1",
+            "stuhl_2": "Stuhl 2"
+          }
+        },
+        "bemerkung": {
+          "identifier": "bemerkung",
+          "label": "Interne Bemerkung (optional)",
+          "type": "string",
+          "subtype": "textarea",
+          "fulltype": "string/textarea",
+          "description": "A string value that can contain multiple lines of text (or `null`/`None`).",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        }
+      }
+    },
+    "terminbuchung": {
+      "app_id": "6a85b469400587dd961ffdfa",
+      "name": "Terminbuchung",
+      "main": false,
+      "controls": {
+        "vorname": {
+          "identifier": "vorname",
+          "label": "Vorname",
+          "type": "string",
+          "subtype": "text",
+          "fulltype": "string/text",
+          "description": "A string value not longer than 4000 characters (or `null`/`None`).",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "nachname": {
+          "identifier": "nachname",
+          "label": "Nachname",
+          "type": "string",
+          "subtype": "text",
+          "fulltype": "string/text",
+          "description": "A string value not longer than 4000 characters (or `null`/`None`).",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "telefon": {
+          "identifier": "telefon",
+          "label": "Telefonnummer",
+          "type": "string",
+          "subtype": "tel",
+          "fulltype": "string/tel",
+          "description": "A valid telephone number (or `null`/`None`). Might include country prefix and should include area code.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "email": {
+          "identifier": "email",
+          "label": "E-Mail-Adresse",
+          "type": "string",
+          "subtype": "email",
+          "fulltype": "string/email",
+          "description": "A valid email address (or `null`/`None`).",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "termin": {
+          "identifier": "termin",
+          "label": "Gewünschter Termin",
+          "type": "applookup",
+          "subtype": "select",
+          "fulltype": "applookup/select",
+          "description": "A reference to a LivingApp record from the target lookup app 'Verfügbare Termine' with the id `6a85b4674f059d5c7d13e874` (or `null`/`None`).\n\nThe field value will be a valid record URL in the form `https://my.living-apps.de/rest/apps/6a85b4674f059d5c7d13e874/records/<record-id>` (or `null`/`None`).\n\nWhen writing, either pass a record URL through exactly as this API returned it, or send the portable relative form `/apps/6a85b4674f059d5c7d13e874/records/<record-id>`. Other equivalent record-URL forms are accepted as well.\n\nDisplayed as single-select field in HTML pages.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "lookup_app": "https://my.living-apps.de/rest/apps/6a85b4674f059d5c7d13e874"
+        },
+        "leistung": {
+          "identifier": "leistung",
+          "label": "Gewünschte Leistung",
+          "type": "lookup",
+          "subtype": "radio",
+          "fulltype": "lookup/radio",
+          "description": "One selected option of multiple available options (or `null`/`None`).\n\nThe available options are defined in the `lookup_data` attribute of this control.\n\nThe field value will be the key in this `lookup_data` attribute (or `null`/`None`).\n\nDisplayed as radio button fields in HTML pages.",
+          "required": true,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true,
+          "lookup_data": {
+            "haarschnitt": "Haarschnitt",
+            "faerben": "Färben",
+            "haarschnitt_und_faerben": "Haarschnitt und Färben"
+          }
+        },
+        "besondere_wuensche": {
+          "identifier": "besondere_wuensche",
+          "label": "Besondere Wünsche oder Hinweise",
+          "type": "string",
+          "subtype": "textarea",
+          "fulltype": "string/textarea",
+          "description": "A string value that can contain multiple lines of text (or `null`/`None`).",
+          "required": false,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true
+        }
+      }
+    }
+  },
+  "metadata": {
+    "apps_list": [
+      "Verfügbare Termine",
+      "Terminbuchung"
+    ]
+  }
+}

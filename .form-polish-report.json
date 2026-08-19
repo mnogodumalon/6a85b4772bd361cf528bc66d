@@ -1,0 +1,16 @@
+{
+  "entities": {
+    "Verfügbare Termine": {
+      "placeholders_set": 3,
+      "defaults_keys": ["datum_uhrzeit", "stuhl"],
+      "computed_keys": [],
+      "reason": "Reine Stammdaten (Terminverfügbarkeit), keine berechenbaren Größen, keine Number-Felder, kein Applookup mit Preis-Target"
+    },
+    "Terminbuchung": {
+      "placeholders_set": 7,
+      "defaults_keys": ["leistung"],
+      "computed_keys": [],
+      "reason": "Kundenstamm mit Termin-Applookup (keine Preise), reine Erfassungs-Entity, keine Computeds erforderlich"
+    }
+  }
+}

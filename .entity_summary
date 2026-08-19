@@ -1,0 +1,31 @@
+Legend: `!` after a field name = required (from the app's base view) —
+a step form that writes such a field must not submit it empty.
+A lookup field lists its keys after the type (`[lookup/select: a|b|c]`);
+these are the ONLY valid write values — quote them into the brief verbatim,
+the matching labels come from LOOKUP_OPTIONS at runtime.
+`⚙` lists the service methods for that entity, spelled exactly.
+`✚` lists the entity's Enriched* fields and its enrich() signature,
+spelled exactly — quote both verbatim; an invented enriched field or
+a missing map is a guaranteed type error.
+
+Modules — copy these paths verbatim into a subagent brief:
+  @/types/app                            entity types, APP_IDS, LOOKUP_OPTIONS
+  @/types/enriched                       EnrichedTerminbuchung — the COMPLETE list, no other Enriched* type exists
+  @/lib/enrich                           the enrich functions — exact fields and signatures on the `✚` line of each entity below; every listed map is REQUIRED, and no other enriched field exists
+  @/services/livingAppsService           LivingAppsService, createRecordUrl, extractRecordId
+  @/hooks/useDashboardData               useDashboardData — the RAW arrays (one per entity, camelCase), their setters, loading, error, fetchAll + verfuegbareTermineMap; it carries NO enriched arrays — build those with the `✚` call below
+  @/lib/formatters                       lookupKey, formatDate
+  @/components/blocks/IntentWizardShell  IntentWizardShell
+  @/components/blocks/EntitySelectStep   EntitySelectStep
+  @/components/blocks/StatusBadge        StatusBadge, getStatusColor
+  @/components/blocks/BudgetTracker      BudgetTracker
+There is NO `@/config/appIds`, no `@/config/lookupOptions` and no
+`@/lib/urlUtils` — APP_IDS and LOOKUP_OPTIONS come from `@/types/app`,
+createRecordUrl from the service. Note the lowercase `l` in the service path.
+
+- Verfügbare Termine (verfuegbare_termine): datum_uhrzeit![date/datetimeminute], stuhl![lookup/radio: stuhl_1|stuhl_2], bemerkung[string/textarea]
+  ⚙ getVerfuegbareTermine() · getVerfuegbareTermineEntry(id) · createVerfuegbareTermineEntry(fields) · updateVerfuegbareTermineEntry(id, fields) · deleteVerfuegbareTermineEntry(id)
+- Terminbuchung (terminbuchung): vorname![string/text], nachname![string/text], telefon![string/tel], email[string/email], termin![applookup/select], leistung![lookup/radio: haarschnitt|faerben|haarschnitt_und_faerben], besondere_wuensche[string/textarea]
+  ⚙ getTerminbuchung() · getTerminbuchungEntry(id) · createTerminbuchungEntry(fields) · updateTerminbuchungEntry(id, fields) · deleteTerminbuchungEntry(id)
+  ✚ EnrichedTerminbuchung adds ONLY terminName — via enrichTerminbuchung(terminbuchung, { verfuegbareTermineMap }), all maps required
+  → termin links to app_id 6a85b4674f059d5c7d13e874

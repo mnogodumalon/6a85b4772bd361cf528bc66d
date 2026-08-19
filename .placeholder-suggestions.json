@@ -1,0 +1,15 @@
+{
+  "VerfuegbareTermineDialog.tsx": {
+    "datum_uhrzeit": "Wann ist der Termin? (Tag & Uhrzeit)",
+    "bemerkung": "Interne Notizen (optional) — z. B. 'Warteliste', 'VIP-Kunde', 'besonders anspruchsvoll'..."
+  },
+  "TerminbuchungDialog.tsx": {
+    "vorname": "z. B. Anna",
+    "nachname": "z. B. Müller",
+    "telefon": "z. B. +49 30 123456789",
+    "email": "z. B. anna@beispiel.de",
+    "termin": "Aus verfügbaren Terminen wählen",
+    "leistung": "z. B. Haarschnitt, Färben",
+    "besondere_wuensche": "Besonderheiten, Allergien, Haarpflege-Wünsche... (Eine Zeile pro Wunsch)"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "pages": {
+    "en": {
+      "+ Buchung": "+ Booking",
+      "Buchungen gesamt": "Total Bookings",
+      "Dieser Stuhl ist zu diesem Zeitpunkt bereits belegt": "This chair is already occupied at this time",
+      "Doppelbuchung prüfen": "Check Double Booking",
+      "Doppelte Buchung erkannt: {0} Termin(e) {1} mehrfach vergeben — bitte prüfen.": "Double booking detected: {0} appointment(s) {1} assigned multiple times — please review.",
+      "Frei": "Free",
+      "Freie Termine": "Open Slots",
+      "Heute": "Today",
+      "Heute keine Termine — jetzt einen anlegen": "No appointments today — create one now",
+      "Heute kommen {0} — {1} Termin(e) auf dem Plan.": "Today {0} — {1} appointment(s) scheduled.",
+      "Heute sind noch keine Buchungen eingetragen.": "No appointments booked for today.",
+      "Heute stehen {0} Termin(e) an.": "Today has {0} appointment(s).",
+      "Heutige Termine": "Today's Appointments",
+      "Keine freien Termine — jetzt einen anlegen": "No open slots — create one now",
+      "Nächster freier Termin: {0}": "Next Available Slot: {0}",
+      "Termin anlegen": "Create Appointment",
+      "Unbekannt": "Unknown",
+      "Verfügbare Termine (diese Woche)": "Available Appointments (This Week)",
+      "{0} — verschoben": "{0} — rescheduled"
+    }
+  },
+  "v": 1
+}
