@@ -15,6 +15,8 @@ import VerfuegbareTermineDetailPage from '@/pages/VerfuegbareTermineDetailPage';
 import TerminbuchungPage from '@/pages/TerminbuchungPage';
 import TerminbuchungDetailPage from '@/pages/TerminbuchungDetailPage';
 // <custom:imports>
+const IntentTerminBuchenPage = lazy(() => import('@/pages/intents/TerminBuchenPage'));
+const IntentTerminFreigebenPage = lazy(() => import('@/pages/intents/TerminFreigebenPage'));
 // </custom:imports>
 
 // Lazy: public pages live outside <Layout> and only load on /#/public/:slug —
@@ -61,6 +63,8 @@ export default function App() {
                 <Route path="admin" element={<AdminPage />} />
                 <Route path="verwaltung/oeffentliche-seiten" element={<PublicPagesAdmin />} />
                 {/* <custom:routes> */}
+                <Route path="intents/termin-buchen" element={<Suspense fallback={null}><IntentTerminBuchenPage /></Suspense>} />
+                <Route path="intents/termin-freigeben" element={<Suspense fallback={null}><IntentTerminFreigebenPage /></Suspense>} />
                 {/* </custom:routes> */}
               </Route>
             </Routes>

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "slug": "terminbuchung",
+      "component": "Terminbuchung",
+      "title": "Termin buchen",
+      "endpoints": [
+        {
+          "entity": "verfuegbare_termine",
+          "op": "list",
+          "fields": [
+            "datum_uhrzeit",
+            "stuhl"
+          ],
+          "scope_description": "Alle verfügbaren Termine (offen für Buchungen)"
+        },
+        {
+          "entity": "terminbuchung",
+          "op": "list",
+          "fields": [
+            "termin"
+          ],
+          "scope_description": "Alle vorhandenen Buchungen (nur termin-Referenz, für Anti-Join)"
+        },
+        {
+          "entity": "terminbuchung",
+          "op": "create",
+          "fields": [
+            "vorname",
+            "nachname",
+            "telefon",
+            "email",
+            "termin",
+            "leistung",
+            "besondere_wuensche"
+          ]
+        }
+      ]
+    }
+  ]
+}

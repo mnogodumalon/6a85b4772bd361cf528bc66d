@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { format, startOfWeek, endOfWeek, addWeeks, parseISO, isWithinInterval } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { PublicShell } from '@/components/PublicShell';
 import {
   loadPublicPagesConfig,
@@ -12,7 +11,7 @@ import {
   type PublicPagesConfig,
   type PublicPageConfig,
 } from '@/lib/publicClient';
-import { tx } from '@/i18n';
+import { tx, dateFnsLocale } from '@/i18n';
 import { IconCalendar, IconScissors, IconCheck, IconChevronLeft, IconUser, IconPhone, IconMail, IconClock, IconArmchair } from '@tabler/icons-react';
 
 // ---- types ---------------------------------------------------------------
@@ -34,12 +33,6 @@ const STUHL_LABELS: Record<string, string> = {
   stuhl_1: 'Stuhl 1',
   stuhl_2: 'Stuhl 2',
 };
-
-const LEISTUNG_OPTS = [
-  { key: 'haarschnitt', label: 'Haarschnitt', note: null },
-  { key: 'faerben', label: 'Färben', note: tx('Hinweis: Färben dauert deutlich länger — bitte die richtige Leistung wählen.') },
-  { key: 'haarschnitt_und_faerben', label: 'Haarschnitt & Färben', note: tx('Hinweis: Kombination dauert am längsten — bitte einplanen.') },
-] as const;
 
 type LeistungKey = 'haarschnitt' | 'faerben' | 'haarschnitt_und_faerben';
 
@@ -140,6 +133,12 @@ function SlotTile({
 // ---- main component -------------------------------------------------------
 
 export default function Terminbuchung() {
+  const LEISTUNG_OPTS = [
+  { key: 'haarschnitt', label: tx('Haarschnitt'), note: null },
+  { key: 'faerben', label: tx('Färben'), note: tx('Hinweis: Färben dauert deutlich länger — bitte die richtige Leistung wählen.') },
+  { key: 'haarschnitt_und_faerben', label: tx('Haarschnitt & Färben'), note: tx('Hinweis: Kombination dauert am längsten — bitte einplanen.') },
+] as const;
+
   const [cfg, setCfg] = useState<PublicPagesConfig | null>(null);
   const [page, setPage] = useState<PublicPageConfig | null>(null);
   const [loadingCfg, setLoadingCfg] = useState(true);
@@ -271,9 +270,9 @@ export default function Terminbuchung() {
 
     try {
       await createPublicRecord(cfg, page, {
-        vorname,
-        nachname,
-        telefon,
+        vorname: vorname,
+        nachname: nachname,
+        telefon: telefon,
         email: email || undefined,
         leistung,
         besondere_wuensche: besondereWuensche || undefined,
@@ -317,8 +316,8 @@ export default function Terminbuchung() {
               {sortedDays.map(day => {
                 const slots = grouped.get(day)!;
                 const parsed = parseISO(day);
-                const weekday = format(parsed, 'EEEE', { locale: de });
-                const dateStr = format(parsed, 'd. MMMM', { locale: de });
+                const weekday = format(parsed, 'EEEE', { locale: dateFnsLocale() });
+                const dateStr = format(parsed, 'd. MMMM', { locale: dateFnsLocale() });
                 return (
                   <div key={day}>
                     <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 flex items-center gap-2">
@@ -346,7 +345,7 @@ export default function Terminbuchung() {
             <IconCalendar size={20} className="shrink-0 text-primary mt-0.5" />
             <div>
               <p className="font-semibold text-sm">
-                {format(parseISO(selectedTermin.datum_uhrzeit), "EEEE, d. MMMM 'um' HH:mm 'Uhr'", { locale: de })}
+                {format(parseISO(selectedTermin.datum_uhrzeit), "EEEE, d. MMMM 'um' HH:mm 'Uhr'", { locale: dateFnsLocale() })}
               </p>
               <p className="text-xs text-muted-foreground mt-0.5">
                 {STUHL_LABELS[selectedTermin.stuhl] ?? selectedTermin.stuhl}
@@ -513,7 +512,7 @@ export default function Terminbuchung() {
               <div>
                 <p className="text-xs text-muted-foreground">{tx('Termin')}</p>
                 <p className="font-semibold text-sm">
-                  {format(parseISO(selectedTermin.datum_uhrzeit), "EEEE, d. MMMM yyyy 'um' HH:mm 'Uhr'", { locale: de })}
+                  {format(parseISO(selectedTermin.datum_uhrzeit), "EEEE, d. MMMM yyyy 'um' HH:mm 'Uhr'", { locale: dateFnsLocale() })}
                 </p>
               </div>
             </div>

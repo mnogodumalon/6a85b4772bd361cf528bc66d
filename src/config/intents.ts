@@ -20,6 +20,7 @@
 import type { ComponentType } from 'react';
 
 // <custom:intent-imports>
+import { IconCalendarPlus, IconCalendarEvent } from '@tabler/icons-react';
 // </custom:intent-imports>
 
 export interface IntentLink {
@@ -42,6 +43,8 @@ export interface IntentLink {
 
 export const INTENTS: IntentLink[] = [
   // <custom:intents>
+  { path: '/intents/termin-buchen', label: { de: 'Termin buchen', en: 'Book appointment' }, icon: IconCalendarPlus, description: 'Freien Termin auswaehlen und Kundenbuchung anlegen' },
+  { path: '/intents/termin-freigeben', label: { de: 'Termin freigeben', en: 'Add slot' }, icon: IconCalendarEvent, description: 'Neuen freien Termin-Slot anlegen' },
   // </custom:intents>
 ];
 
@@ -52,4 +55,4 @@ export const INTENTS: IntentLink[] = [
  * purpose — a scaffold update resets it to false (self-healing if Phase 2
  * never ran).
  */
-export const INTENTS_PENDING = true;
+export const INTENTS_PENDING = false;
