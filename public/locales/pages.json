@@ -1,0 +1,29 @@
+{
+  "pages": {
+    "en": {
+      "Anstehende Buchungen": "Upcoming bookings",
+      "Buchung anlegen": "Create booking",
+      "Buchung erfassen": "Add booking",
+      "Buchungen": "Bookings",
+      "Buchungen pro Leistung": "Bookings per service",
+      "Buchungen prüfen": "Review bookings",
+      "Frei diese Woche": "Free this week",
+      "Frei nächste Woche": "Free next week",
+      "Frei · {0}": "Free · {0}",
+      "Freien Termin anlegen": "Create free slot",
+      "Gast": "Guest",
+      "Heute ist nichts gebucht — als Nächstes kommt {0} ({1} Uhr).": "Nothing booked today — next up is {0} ({1}).",
+      "Heute kommen {0} — der Erste um {1} Uhr.": "{0} coming today — the first at {1}.",
+      "Lege freie Termine für Stuhl 1 und Stuhl 2 an, damit Kunden buchen können.": "Create free slots for Chair 1 and Chair 2 so customers can book.",
+      "Leistung": "Service",
+      "Leistung offen": "Service open",
+      "Noch keine Buchung und keine freien Termine.": "No bookings and no free slots yet.",
+      "Noch keine Buchung — {0} Termine sind frei.": "No bookings yet — {0} slots are free.",
+      "Noch keine Buchung — {0} freie Termine warten, der nächste an {1}.": "No bookings yet — {0} free slots available, the next one on {1}.",
+      "Noch keine Buchungen": "No bookings yet",
+      "Ohne Namen": "Unnamed",
+      "haben denselben Termin gebucht ({0} Uhr, {1}).": "booked the same slot ({0}, {1})."
+    }
+  },
+  "v": 1
+}

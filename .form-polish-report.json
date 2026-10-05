@@ -1,0 +1,18 @@
+{
+  "entities": {
+    "Verfügbare Termine": {
+      "placeholders_set": 2,
+      "defaults_keys": [
+        "datum_uhrzeit"
+      ],
+      "computed_keys": [],
+      "reason": "Keine Formeln, da der Termin nur ein Datum, eine Stuhlauswahl und eine Bemerkung enthält und keine numerische Berechnung möglich ist."
+    },
+    "Terminbuchung": {
+      "placeholders_set": 5,
+      "defaults_keys": [],
+      "computed_keys": [],
+      "reason": "Keine Formeln, da die Terminbuchung nur Kontaktdaten, Terminauswahl und Leistung ohne numerische Felder enthält."
+    }
+  }
+}
