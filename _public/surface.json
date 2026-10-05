@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "slug": "terminbuchung",
+      "component": "TerminOnlineBuchen",
+      "title": "Termin online buchen",
+      "endpoints": [
+        {
+          "entity": "verfuegbare_termine",
+          "op": "list",
+          "fields": [
+            "datum_uhrzeit",
+            "stuhl"
+          ],
+          "scope": "r.v_datum_uhrzeit >= now() and r.v_datum_uhrzeit <= now() + days(14)",
+          "scope_description": "zeigt nur Termine ab jetzt bis in 14 Tagen",
+          "max_records": 200
+        },
+        {
+          "entity": "terminbuchung",
+          "op": "create",
+          "fields": [
+            "termin",
+            "vorname",
+            "nachname",
+            "telefon",
+            "email",
+            "leistung",
+            "besondere_wuensche"
+          ]
+        },
+        {
+          "entity": "terminbuchung",
+          "op": "list",
+          "fields": [
+            "termin"
+          ],
+          "purpose": "availability"
+        }
+      ]
+    }
+  ]
+}
