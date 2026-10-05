@@ -14,6 +14,8 @@ import { IntentPolicyLoader } from '@/components/IntentPolicyLoader';
 import IntentsAdmin from '@/pages/IntentsAdmin';
 import AppMap from '@/pages/AppMap';
 // <custom:imports>
+const IntentTerminBuchenPage = lazy(() => import('@/pages/intents/TerminBuchenPage'));
+import { DashboardSkeleton } from '@/components/DashboardStates';
 // </custom:imports>
 
 // Lazy: public pages live outside <Layout> and only load on /#/public/:slug —
@@ -85,6 +87,7 @@ export default function App() {
                 <Route path="verwaltung/oeffentliche-seiten" element={<PublicPagesAdmin />} />
                 <Route path="verwaltung/oeffentliche-seiten/:slug/felder" element={<PublicPageFields />} />
                 {/* <custom:routes> */}
+                <Route path="intents/termin-buchen" element={<Suspense fallback={<DashboardSkeleton />}><IntentTerminBuchenPage /></Suspense>} />
                 {/* </custom:routes> */}
                 {/* An unknown hash (a bookmark from before a rebuild renamed the
                     flows, a mistyped link) must not be a blank page. */}
