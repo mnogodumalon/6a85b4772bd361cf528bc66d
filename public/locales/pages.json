@@ -1,0 +1,32 @@
+{
+  "pages": {
+    "en": {
+      "Als Nächstes kommt {0} ({1}) am {2}. In den nächsten zwei Wochen sind noch {3} Termine frei.": "Next up is {0} ({1}) on {2}. {3} slots are still free over the next two weeks.",
+      "Anstehende Buchungen": "Upcoming bookings",
+      "Buchungen nach Leistung": "Bookings by service",
+      "Frei": "Free",
+      "Freie Termine": "Free slots",
+      "Freien Termin anlegen": "Create free slot",
+      "Gebucht (2 Wochen)": "Booked (2 weeks)",
+      "Gebuchte Termine bitte über die Buchung ändern, nicht per Verschieben.": "To change booked appointments, edit the booking instead of moving it.",
+      "Keine Buchungen und keine freien Termine.": "No bookings and no free slots.",
+      "Keine Buchungen — nächster freier Termin: {0}": "No bookings — next free slot: {0}",
+      "Keine frei — neue Termine anlegen": "None free — create new slots",
+      "Lege freie Termine für deine beiden Stühle an, damit Kunden online buchen können.": "Create free slots for your two chairs so customers can book online.",
+      "Leistung": "Service",
+      "Noch keine Buchungen — der nächste freie Termin ist {0} an {1}.": "No bookings yet — the next free slot is {0} at {1}.",
+      "Nächster: {0}": "Next: {0}",
+      "Spätere Buchung prüfen": "Check later booking",
+      "Stornieren": "Cancel",
+      "Termin auf {0} verschoben": "Appointment moved to {0}",
+      "Termin buchen": "Book appointment",
+      "Terminplaner": "Appointment Planner",
+      "Wunsch notiert": "Request noted",
+      "Zu dieser Zeit gibt es an diesem Stuhl schon einen Termin.": "There is already an appointment at this chair at this time.",
+      "haben denselben Termin gebucht ({0}, {1}) — einer muss umgebucht werden.": "booked the same slot ({0}, {1}) — one must be rebooked.",
+      "{0} davon mit Färben (länger)": "{0} of them with coloring (longer)",
+      "{0} storniert — Termin ist wieder frei": "{0} canceled — slot is free again"
+    }
+  },
+  "v": 1
+}
