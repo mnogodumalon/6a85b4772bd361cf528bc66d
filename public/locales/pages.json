@@ -1,0 +1,24 @@
+{
+  "pages": {
+    "en": {
+      "Anstehende Buchungen": "Upcoming bookings",
+      "Buchungen je Leistung": "Bookings by service",
+      "Frei": "Available",
+      "Frei diese Woche": "Available this week",
+      "Frei nächste Woche": "Available next week",
+      "Freien Termin anlegen": "Create available appointment",
+      "Gebuchte Termine können nicht verschoben werden": "Booked appointments cannot be moved",
+      "Leistung": "Service",
+      "Noch keine Buchungen — Kunden buchen online freie Termine.": "No bookings yet — customers book available appointments online.",
+      "Termin buchen": "Book appointment",
+      "Termin nicht gefunden": "Appointment not found",
+      "Termin verschoben": "Appointment moved",
+      "Terminplaner": "Appointment Planner",
+      "Zu dieser Zeit gibt es an diesem Stuhl schon einen Termin": "There is already an appointment at this chair at this time",
+      "{0} Als Nächstes kommt {1} — {2} Termine sind in den nächsten zwei Wochen noch frei.": "{0} Next up is {1} — {2} appointments are still available in the next two weeks.",
+      "{0} Lege freie Termine an, damit Kunden online buchen können.": "{0} Create available appointments so customers can book online.",
+      "{0} Noch keine anstehenden Buchungen — {1} freie Termine warten auf Kunden.": "{0} No upcoming bookings yet — {1} available appointments are waiting for customers."
+    }
+  },
+  "v": 1
+}

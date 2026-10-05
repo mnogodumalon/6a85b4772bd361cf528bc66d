@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "language": "de",
+  "understanding": {
+    "summary": "Ein Terminplaner für einen Friseursalon mit zwei Stühlen. Der Salon legt freie Termine an, Kunden sehen online, welche Termine noch frei sind, und buchen einen davon mit der gewünschten Leistung (Haarschnitt, Färben oder beides). Ein Termin darf nur einmal vergeben werden.",
+    "roles": [
+      "Salonbetreiber",
+      "Mitarbeitende am Empfang",
+      "Kunden (online)"
+    ],
+    "main_tasks": [
+      "Freie Termine pro Stuhl anlegen",
+      "Freie Termine online anzeigen",
+      "Termin mit gewünschter Leistung buchen",
+      "Doppelbuchungen verhindern",
+      "Buchungen im Blick behalten"
+    ],
+    "platform_roles": [
+      {
+        "persona": "Salonbetreiber",
+        "role": "administrator",
+        "apps": [
+          "verfuegbare_termine",
+          "terminbuchung"
+        ]
+      },
+      {
+        "persona": "Mitarbeitende am Empfang",
+        "role": "datenverarbeitung",
+        "apps": [
+          "verfuegbare_termine",
+          "terminbuchung"
+        ]
+      }
+    ]
+  },
+  "flows": [
+    {
+      "slug": "termin-buchen",
+      "label": {
+        "de": "Termin buchen",
+        "en": "Book appointment"
+      },
+      "description": "Eine Mitarbeiterin am Empfang bucht für einen Kunden einen noch freien Termin mit der gewünschten Leistung. Ein Termin kann nur einmal vergeben werden.",
+      "priority": "must",
+      "writes": [
+        {
+          "entity": "terminbuchung",
+          "op": "create",
+          "when": "always",
+          "fields": {
+            "vorname": "user",
+            "nachname": "user",
+            "telefon": "user",
+            "email": "user",
+            "termin": "picked",
+            "leistung": "user",
+            "besondere_wuensche": "user"
+          },
+          "needs": {}
+        }
+      ],
+      "required": [],
+      "brief": "# Flow `termin-buchen` — Termin buchen\nEine Mitarbeiterin am Empfang bucht für einen Kunden einen noch freien Termin mit der gewünschten Leistung. Ein Termin kann nur einmal vergeben werden.\n\n## Your hook — import it, never rebuild what it owns\n`import { useTerminBuchenFlow } from '@/lib/journey/flows/TerminBuchen';` — generated from the Schreibliste below. It OWNS the form(s), one record search per picked field (columns and filter from the plan) and the submit plan with every fixed and derived value. You compose: `flow.forms.<entity>` for <Bound>/<Field>, `{...flow.picks.<field>.select} {...flow.pick('<field>')}` (or `flow.pickMany` for a multi pick) for <EntitySelectStep>, `flow.validateStep(n)` in StepNav.onNext, `flow.submit` + `flow.formList` for SummaryStep/SuccessStep, `flow.reset()`; what the hook does not own reads through its door `flow.port` — availability `useOccupancy(flow.port, '<entity>', { resource })`, a count `useRecordCount(flow.port, …)` — never import servicePort next to the hook. Options: `steps` (field → step), `items` (how a hit reads, per pick: termin), `initial`, `messages`. The hook's docblock in .lane-context.md shows the exact call. Never import servicePort, useStepForm, useJourneySubmit, useRecordSearch or useDashboardData in this page — check-intents refuses a page that uses the hook and any of them.\n\n## Steps (in this order)\n1. Freien Termin aus der Liste der noch nicht gebuchten Termine wählen\n2. Name, Telefonnummer und E-Mail des Kunden erfassen\n3. Gewünschte Leistung wählen und Wünsche notieren\n4. Buchung speichern\n\n## Schreibliste — the ONLY writes this flow makes (the gate compares your plan steps with this list)\n- creates `terminbuchung`:\n    - `vorname`: the user enters it (bind it through the layer: form.field/…)\n    - `nachname`: the user enters it (bind it through the layer: form.field/…)\n    - `telefon`: the user enters it (bind it through the layer: form.field/…)\n    - `email`: the user enters it (bind it through the layer: form.field/…)\n    - `termin`: from the record the user picks in this flow\n    - `leistung`: the user enters it (bind it through the layer: form.field/…)\n    - `besondere_wuensche`: the user enters it (bind it through the layer: form.field/…)\n\n## Reads\n- `verfuegbare_termine` columns datum_uhrzeit, stuhl, bemerkung\n- `terminbuchung` columns termin\n\n## Checks BEFORE the write (block the submit with the message when they fail)\n- unique (field=`terminbuchung.termin`) — message: „Dieser Termin ist bereits vergeben. Bitte wählen Sie einen anderen Termin.“\n\n## Success page\n- shows: `terminbuchung.nachname`, `terminbuchung.termin`, `terminbuchung.leistung`\n- next flows to offer: `freie-termine-anlegen`\n\n## Never write these — another flow or a tool owns them\n- `verfuegbare_termine.datum_uhrzeit` (owner: intent `freie-termine-anlegen`)\n- `verfuegbare_termine.stuhl` (owner: intent `freie-termine-anlegen`)\n- `verfuegbare_termine.bemerkung` (owner: intent `freie-termine-anlegen`)\n"
+    },
+    {
+      "slug": "freie-termine-anlegen",
+      "label": {
+        "de": "Freie Termine anlegen",
+        "en": "Create available slots"
+      },
+      "description": "Der Salon legt freie Termine für beide Stühle an, damit Kunden sie buchen können.",
+      "priority": "nice",
+      "writes": [
+        {
+          "entity": "verfuegbare_termine",
+          "op": "create",
+          "when": "always",
+          "fields": {
+            "datum_uhrzeit": "user",
+            "stuhl": "user",
+            "bemerkung": "user"
+          },
+          "needs": {}
+        }
+      ],
+      "required": [],
+      "brief": "# Flow `freie-termine-anlegen` — Freie Termine anlegen\nDer Salon legt freie Termine für beide Stühle an, damit Kunden sie buchen können.\n\n## Your hook — import it, never rebuild what it owns\n`import { useFreieTermineAnlegenFlow } from '@/lib/journey/flows/FreieTermineAnlegen';` — generated from the Schreibliste below. It OWNS the form(s), one record search per picked field (columns and filter from the plan) and the submit plan with every fixed and derived value. You compose: `flow.forms.<entity>` for <Bound>/<Field>, `{...flow.picks.<field>.select} {...flow.pick('<field>')}` (or `flow.pickMany` for a multi pick) for <EntitySelectStep>, `flow.validateStep(n)` in StepNav.onNext, `flow.submit` + `flow.formList` for SummaryStep/SuccessStep, `flow.reset()`; what the hook does not own reads through its door `flow.port` — availability `useOccupancy(flow.port, '<entity>', { resource })`, a count `useRecordCount(flow.port, …)` — never import servicePort next to the hook. Options: `steps` (field → step), `items` (how a hit reads, per pick), `initial`, `messages`. The hook's docblock in .lane-context.md shows the exact call. Never import servicePort, useStepForm, useJourneySubmit, useRecordSearch or useDashboardData in this page — check-intents refuses a page that uses the hook and any of them.\n\n## Steps (in this order)\n1. Datum und Uhrzeit eingeben\n2. Stuhl wählen\n3. Optional interne Bemerkung ergänzen, z. B. Zeitbedarf fürs Färben\n4. Termin speichern\n\n## Schreibliste — the ONLY writes this flow makes (the gate compares your plan steps with this list)\n- creates `verfuegbare_termine`:\n    - `datum_uhrzeit`: the user enters it (bind it through the layer: form.field/…)\n    - `stuhl`: the user enters it (bind it through the layer: form.field/…)\n    - `bemerkung`: the user enters it (bind it through the layer: form.field/…)\n\n## Reads\n- `verfuegbare_termine` columns datum_uhrzeit, stuhl\n\n## Checks BEFORE the write (block the submit with the message when they fail)\n- no_overlap (from=`verfuegbare_termine.datum_uhrzeit`, to=`verfuegbare_termine.datum_uhrzeit`, resource=`verfuegbare_termine.stuhl`) — message: „Für diesen Stuhl gibt es zu dieser Zeit schon einen Termin.“\n\n## Success page\n- shows: `verfuegbare_termine.datum_uhrzeit`, `verfuegbare_termine.stuhl`\n- next flows to offer: `termin-buchen`\n\n## Never write these — another flow or a tool owns them\n- `terminbuchung.vorname` (owner: intent `termin-buchen`)\n- `terminbuchung.nachname` (owner: intent `termin-buchen`)\n- `terminbuchung.telefon` (owner: intent `termin-buchen`)\n- `terminbuchung.email` (owner: intent `termin-buchen`)\n- `terminbuchung.termin` (owner: intent `termin-buchen`)\n- `terminbuchung.leistung` (owner: intent `termin-buchen`)\n- `terminbuchung.besondere_wuensche` (owner: intent `termin-buchen`)\n"
+    }
+  ],
+  "public_pages": [
+    {
+      "slug": "termin-online-buchen",
+      "purpose": "Kunden sehen die freien Termine dieser und nächster Woche und buchen einen davon mit der gewünschten Leistung.",
+      "publish": true,
+      "lists": [
+        {
+          "entity": "verfuegbare_termine",
+          "columns": [
+            "datum_uhrzeit",
+            "stuhl"
+          ],
+          "filter": {
+            "mode": "all",
+            "conditions": [
+              {
+                "field": "datum_uhrzeit",
+                "op": "gte",
+                "value": {
+                  "rel": "today"
+                }
+              },
+              {
+                "field": "datum_uhrzeit",
+                "op": "lte",
+                "value": {
+                  "rel": "today",
+                  "days": 14
+                }
+              }
+            ]
+          },
+          "max_records": null
+        },
+        {
+          "entity": "terminbuchung",
+          "columns": [
+            "termin"
+          ],
+          "filter": null,
+          "max_records": null
+        }
+      ],
+      "creates": [
+        {
+          "entity": "terminbuchung",
+          "fields": {
+            "vorname": "user",
+            "nachname": "user",
+            "telefon": "user",
+            "email": "user",
+            "termin": "picked",
+            "leistung": "user",
+            "besondere_wuensche": "user"
+          },
+          "fixed": {}
+        }
+      ],
+      "brief": "# Public page `termin-online-buchen`\nKunden sehen die freien Termine dieser und nächster Woche und buchen einen davon mit der gewünschten Leistung.\n\n## Lists (declare exactly these in the surface)\n- `verfuegbare_termine`: columns `datum_uhrzeit`, `stuhl`, filter {\"mode\": \"all\", \"conditions\": [{\"field\": \"datum_uhrzeit\", \"op\": \"gte\", \"value\": {\"rel\": \"today\"}}, {\"field\": \"datum_uhrzeit\", \"op\": \"lte\", \"value\": {\"rel\": \"today\", \"days\": 14}}]}\n- `terminbuchung`: columns `termin`\n\n## Creates (declare exactly these in the surface)\n- `terminbuchung`: visitor fields `vorname`, `nachname`, `telefon`, `email`, `termin`, `leistung`, `besondere_wuensche`\n\nPublish: yes\n"
+    }
+  ],
+  "tools": [],
+  "covered_by_platform": [
+    {
+      "wish": "Termine und Buchungen übersichtlich einsehen und suchen",
+      "feature": "list_page"
+    },
+    {
+      "wish": "Freie Termine selbst anlegen und bearbeiten",
+      "feature": "record_form"
+    },
+    {
+      "wish": "Buchungen pro Termin oder Leistung auszählen",
+      "feature": "distribution_view"
+    }
+  ],
+  "ownership": {
+    "terminbuchung": {
+      "vorname": "intent:termin-buchen",
+      "nachname": "intent:termin-buchen",
+      "telefon": "intent:termin-buchen",
+      "email": "intent:termin-buchen",
+      "termin": "intent:termin-buchen",
+      "leistung": "intent:termin-buchen",
+      "besondere_wuensche": "intent:termin-buchen"
+    },
+    "verfuegbare_termine": {
+      "datum_uhrzeit": "intent:freie-termine-anlegen",
+      "stuhl": "intent:freie-termine-anlegen",
+      "bemerkung": "intent:freie-termine-anlegen"
+    }
+  },
+  "dashboard": {
+    "focus": [
+      "Anstehende Terminbuchungen",
+      "Freie Termine dieser und nächster Woche",
+      "Buchungen je Leistung"
+    ],
+    "hints": [
+      "Termine ohne Buchung sind noch frei",
+      "Färben dauert länger, bei der Terminplanung beachten"
+    ]
+  }
+}
