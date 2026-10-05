@@ -16,7 +16,11 @@
         "leistung",
         "besondere_wuensche"
       ],
-      "policy": null
+      "policy": {
+        "fields": {},
+        "lists": {},
+        "texts": {}
+      }
     }
   ]
 }

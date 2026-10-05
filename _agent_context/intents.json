@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "flows": [
+    {
+      "path": "/intents/termin-buchen",
+      "label": "Termin buchen",
+      "description": "Freien Termin mit gewünschter Leistung für eine Kundin oder einen Kunden buchen",
+      "file": "src/pages/intents/TerminBuchenPage.tsx",
+      "summary": "/**\n * Termin buchen — 4-Schritt-Wizard für den Empfang.\n * Steps: 1) Freien Termin wählen → 2) Kundendaten → 3) Leistung & Hinweise → 4) Prüfen & speichern.\n * Reads: verfuegbare_termine (noch nicht vergebene), terminbuchung. Writes: terminbuchung (via useTerminBuchenFlow).\n * Composes: IntentWizardShell, EntitySelectStep, Bound, StepNav, SummaryStep, SuccessStep.\n */",
+      "components": [
+        "Bound",
+        "EntitySelectStep",
+        "IntentWizardShell",
+        "StepNav",
+        "SuccessStep",
+        "SummaryStep",
+        "WizardStep"
+      ],
+      "writes": []
+    }
+  ],
+  "unregistered_pages": []
+}
