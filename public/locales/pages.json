@@ -1,0 +1,25 @@
+{
+  "pages": {
+    "en": {
+      "Als Nächstes kommen {0} — {1}. Noch {2} Termine frei.": "Next up: {0} — {1}. {2} slots still open.",
+      "An dieser Zeit gibt es an diesem Stuhl bereits einen Termin.": "There is already an appointment at this time on this chair.",
+      "Anstehende Buchungen": "Upcoming bookings",
+      "Doppelbelegung: {0} ({1}) ist mehrfach gebucht — {2}.": "Double booking: {0} ({1}) is booked more than once — {2}.",
+      "Frei": "Free",
+      "Frei (2 Wochen)": "Free (2 weeks)",
+      "Freien Termin anlegen": "Create open slot",
+      "Färben dauert länger: {0} liegt am {1} direkt nach einem Färbetermin am selben Stuhl.": "Coloring takes longer: {0} on {1} comes right after a coloring appointment on the same chair.",
+      "Gebucht": "Booked",
+      "Gewünschte Leistungen": "Requested services",
+      "Keine Buchungen und keine freien Termine.": "No bookings and no open slots.",
+      "Keine Buchungen — nächster freier Termin: {0}": "No bookings — next open slot: {0}",
+      "Leistung": "Service",
+      "Mit Färben": "With coloring",
+      "Noch keine Buchungen — {0} freie Termine warten auf Kunden.": "No bookings yet — {0} open slots are waiting for customers.",
+      "Noch keine Termine angelegt — lege freie Termine für beide Stühle an.": "No slots created yet — create open slots for both chairs.",
+      "Prüfen": "Review",
+      "Termin verschoben": "Appointment rescheduled"
+    }
+  },
+  "v": 1
+}
