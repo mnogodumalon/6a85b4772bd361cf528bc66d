@@ -1,0 +1,36 @@
+{
+  "pages": {
+    "en": {
+      "Auf diesem Stuhl ist um {0} Uhr schon ein Termin — die Zeiten würden sich überschneiden.": "This chair already has an appointment at {0} — the times would overlap.",
+      "Buchen": "Book",
+      "Buchung erfassen": "Record booking",
+      "Buchungen je Leistung": "Bookings by service",
+      "Doppelbuchung prüfen": "Check double booking",
+      "Ersten freien Termin anlegen": "Create first available slot",
+      "Frei": "Available",
+      "Frei in 14 Tagen": "Available in 14 days",
+      "Freien Termin anlegen": "Create available slot",
+      "Gebucht in 14 Tagen": "Booked in 14 days",
+      "Heute keine Kunden angemeldet — zuletzt hat {0} gebucht, es sind keine freien Termine mehr offen.": "No customers booked today — last booking by {0}, no available slots left.",
+      "Heute keine Kunden angemeldet — zuletzt hat {0} gebucht, nächster freier Termin {1}.": "No customers booked today — last booking by {0}, next available slot {1}.",
+      "Heute kommen {0} — der nächste freie Termin ist {1}.": "{0} coming today — next available slot is {1}.",
+      "Heute kommen {0} — in den nächsten zwei Wochen ist nichts mehr frei.": "{0} coming today — nothing available in the next two weeks.",
+      "Keine freien Termine in den nächsten zwei Wochen.": "No available slots in the next two weeks.",
+      "Lege freie Termine für Stuhl 1 und Stuhl 2 an, damit Kunden online buchen können.": "Create available slots for Chair 1 and Chair 2 so customers can book online.",
+      "Leistung": "Service",
+      "Neue Buchungen": "New bookings",
+      "Neue Buchungen (7 Tage)": "New bookings (7 days)",
+      "Noch keine Buchung — online sichtbar ist ab {0} ein freier Termin.": "No bookings yet — an available slot will be visible online from {0}.",
+      "Noch keine Buchungen eingegangen.": "No bookings received yet.",
+      "Nächste freie Termine": "Next available slots",
+      "Ohne Namen": "Unnamed",
+      "Richte deinen Salon ein: Lege freie Termine für Stuhl 1 und Stuhl 2 an, dann können Kunden online einen davon buchen.": "Set up your salon: Create available slots for Chair 1 and Chair 2, then customers can book one of them online.",
+      "Stuhl": "Chair",
+      "Termin": "Appointment",
+      "Termin verschoben": "Appointment rescheduled",
+      "frei": "available",
+      "ist doppelt vergeben ({0}) — ein Termin darf nur einmal gebucht werden.": "is double-booked ({0}) — a slot can only be booked once."
+    }
+  },
+  "v": 1
+}

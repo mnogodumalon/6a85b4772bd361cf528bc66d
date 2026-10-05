@@ -1,0 +1,13 @@
+{
+  "VerfuegbareTermineDialog.tsx": {
+    "datum_uhrzeit": "Wann ist der Termin frei?",
+    "bemerkung": "Notiz für das Team"
+  },
+  "TerminbuchungDialog.tsx": {
+    "vorname": "z. B. Anna",
+    "nachname": "z. B. Müller",
+    "email": "z. B. anna@beispiel.de",
+    "termin": "Welcher Termin passt?",
+    "besondere_wuensche": "Wünsche oder Hinweise"
+  }
+}

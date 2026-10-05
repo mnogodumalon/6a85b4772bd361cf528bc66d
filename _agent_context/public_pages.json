@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "slug": "terminbuchung",
+      "type": "custom",
+      "entity": "terminbuchung",
+      "title": "Termin buchen",
+      "published": true,
+      "fields": [
+        "vorname",
+        "nachname",
+        "telefon",
+        "email",
+        "termin",
+        "leistung",
+        "besondere_wuensche"
+      ],
+      "policy": null
+    }
+  ]
+}
