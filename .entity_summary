@@ -52,12 +52,12 @@ There is NO `@/config/appIds`, no `@/config/lookupOptions` and no
 createRecordUrl from the service. Note the lowercase `l` in the service path.
 
 - Verfügbare Termine (verfuegbare_termine): datum_uhrzeit!^[date/datetimeminute] "Datum und Uhrzeit", stuhl!^[lookup/radio: stuhl_1|stuhl_2], bemerkung^[string/textarea] "Interne Bemerkung (optional)"
-  ≡ 6 records at build time
+  ≡ 8 records at build time
   · datum_uhrzeit: A specific moment in time consisting of year, month, day, hour and minute (or `null`/`None`) The field value will be a string in the format `<YYYY>-<MM>-<DD>T<HH>:<MM>` (or `null`/`None`). For example: `2000-02-29T11:30`. For `POST`/`PUT`/`PATCH` requests the REST API uses a liberal parsing approach so that strings like `2026`, `February 29, 2000 12:34 MEST`, `letztes Jahr` etc. will be accepted as value datetime values. However this runs the risk of parsing ambiguous values incorrectly. To ensure reliable parsing it is best to use the canonical format specified above.
   ◈ stuhl → choice (2 options, ChoiceGroup)
   ⚙ getVerfuegbareTermine() · getVerfuegbareTermineEntry(id) · createVerfuegbareTermineEntry(fields) · updateVerfuegbareTermineEntry(id, fields) · deleteVerfuegbareTermineEntry(id) · queryVerfuegbareTermine({ filter, orderby, limit, offset, fields }) · countVerfuegbareTermine(filter?)
 - Terminbuchung (terminbuchung): vorname!^[string/text], nachname!^[string/text], telefon!^[string/tel] "Telefonnummer", email^[string/email] "E-Mail-Adresse", termin!^[applookup/select] "Gewünschter Termin", leistung![lookup/radio: haarschnitt|faerben|haarschnitt_und_faerben] "Gewünschte Leistung", besondere_wuensche[string/textarea] "Besondere Wünsche oder Hinweise"
-  ≡ 5 records at build time
+  ≡ 6 records at build time
   ◈ leistung → choice (3 options, ChoiceGroup) · termin → record (verfuegbare_termine, EntitySelectStep)
   ⚙ getTerminbuchung() · getTerminbuchungEntry(id) · createTerminbuchungEntry(fields) · updateTerminbuchungEntry(id, fields) · deleteTerminbuchungEntry(id) · queryTerminbuchung({ filter, orderby, limit, offset, fields }) · countTerminbuchung(filter?)
   ✚ EnrichedTerminbuchung adds ONLY terminName — via enrichTerminbuchung(terminbuchung, { verfuegbareTermineMap }), all maps required

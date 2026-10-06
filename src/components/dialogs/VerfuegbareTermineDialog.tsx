@@ -312,7 +312,7 @@ export function VerfuegbareTermineDialog({ open, onClose, onSubmit, defaultValue
         <Label htmlFor="datum_uhrzeit">{fieldLabel('verfuegbare_termine', 'datum_uhrzeit')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <DatePicker
           id="datum_uhrzeit"
-          placeholder="Wann ist der Termin frei?"
+          placeholder=""
           mode="datetime"
           value={fields.datum_uhrzeit ?? null}
           onChange={v => setFields(f => ({ ...f, datum_uhrzeit: v ?? undefined }))}
@@ -364,7 +364,7 @@ export function VerfuegbareTermineDialog({ open, onClose, onSubmit, defaultValue
         <Label htmlFor="bemerkung">{fieldLabel('verfuegbare_termine', 'bemerkung')}</Label>
         <Textarea
           id="bemerkung"
-          placeholder="Hinweis für das Team"
+          placeholder=""
           value={fields.bemerkung ?? ''}
           onChange={e => setFields(f => ({ ...f, bemerkung: e.target.value }))}
           rows={3}

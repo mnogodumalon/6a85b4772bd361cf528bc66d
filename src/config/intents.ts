@@ -43,8 +43,8 @@ export interface IntentLink {
 
 export const INTENTS: IntentLink[] = [
   // <custom:intents>
-  { path: '/intents/termin-buchen', label: { de: 'Termin für Kunden buchen', en: 'Book appointment for customer' }, icon: IconCalendarPlus, description: 'Freien Termin wählen und Buchung mit Kundendaten und Leistung anlegen' },
-  { path: '/intents/freie-termine-anlegen', label: { de: 'Freie Termine anlegen', en: 'Create available slots' }, icon: IconCalendarTime, description: 'Neue freie Termine für einen Stuhl erfassen, damit Kunden sie buchen können' },
+  { path: '/intents/termin-buchen', label: { de: 'Termin für Kunden buchen', en: 'Book appointment for customer' }, icon: IconCalendarPlus, description: { de: 'Freien Termin wählen und Buchung mit Kundendaten und Leistung anlegen', en: 'Select an available appointment and create a booking with customer details and service' } },
+  { path: '/intents/freie-termine-anlegen', label: { de: 'Freie Termine anlegen', en: 'Create available slots' }, icon: IconCalendarTime, description: { de: 'Neue freie Termine für einen Stuhl erfassen, damit Kunden sie buchen können', en: 'Add new available appointments for a chair so customers can book them' } },
   // </custom:intents>
 ];
 
@@ -64,5 +64,5 @@ export const INTENTS_PENDING = false;
  * pulsing "werden erstellt …" in every deployed Phase-1 bundle forever — no
  * code path redeploys Phase 1 without the flag (live 03.09.2026).
  */
-export const INTENTS_PENDING_SINCE: string | null = '2026-10-05T15:26:50+00:00';
+export const INTENTS_PENDING_SINCE: string | null = null;
 export const PENDING_MAX_MINUTES = 30;

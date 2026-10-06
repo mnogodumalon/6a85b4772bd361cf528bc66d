@@ -120,6 +120,7 @@ export const UI_CATALOG: Record<CoreLocale, Record<string, string>> = {
     "profile_label": "Profil",
     "back": "Zurück",
     "display_section": "Darstellung",
+    "dashboard_nav": "Dashboard",
     "data_management": "Datenverwaltung",
     "apps_search": "Suche...",
     "apps_no_results": "Keine Apps gefunden",
@@ -878,6 +879,7 @@ export const UI_CATALOG: Record<CoreLocale, Record<string, string>> = {
     "profile_label": "Profile",
     "back": "Back",
     "display_section": "View",
+    "dashboard_nav": "Dashboard",
     "data_management": "Data management",
     "apps_search": "Search...",
     "apps_no_results": "No apps found",
@@ -1660,7 +1662,7 @@ export const LABELS: Record<CoreLocale, LabelBundle> = {
           "telefon": "Phone Number",
           "email": "Email Address",
           "termin": "Preferred Appointment",
-          "leistung": "Preferred Service",
+          "leistung": "Requested Service",
           "besondere_wuensche": "Special Requests or Notes"
         },
         "lookups": {

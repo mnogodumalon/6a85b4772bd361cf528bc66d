@@ -349,7 +349,7 @@ export function TerminbuchungDialog({ open, onClose, onSubmit, defaultValues, re
         <Label htmlFor="vorname">{fieldLabel('terminbuchung', 'vorname')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="vorname"
-          placeholder="z. B. Anna"
+          placeholder=""
           value={fields.vorname ?? ''}
           onChange={e => setFields(f => ({ ...f, vorname: e.target.value }))}
           required
@@ -364,7 +364,7 @@ export function TerminbuchungDialog({ open, onClose, onSubmit, defaultValues, re
         <Label htmlFor="nachname">{fieldLabel('terminbuchung', 'nachname')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="nachname"
-          placeholder="z. B. Müller"
+          placeholder=""
           value={fields.nachname ?? ''}
           onChange={e => setFields(f => ({ ...f, nachname: e.target.value }))}
           required
@@ -398,7 +398,7 @@ export function TerminbuchungDialog({ open, onClose, onSubmit, defaultValues, re
           id="email"
           type="email"
           inputMode="email"
-          placeholder="z. B. anna@beispiel.de"
+          placeholder=""
           value={fields.email ?? ''}
           onChange={e => setFields(f => ({ ...f, email: e.target.value }))}
         />
@@ -409,7 +409,7 @@ export function TerminbuchungDialog({ open, onClose, onSubmit, defaultValues, re
         <Label htmlFor="termin">{fieldLabel('terminbuchung', 'termin')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="termin"
-          placeholder="Welcher Termin passt?"
+          placeholder=""
           items={verfuegbareTermineListAll.map(r => ({
             id: r.record_id,
             label: String(r.fields.bemerkung ?? r.record_id),
@@ -478,7 +478,7 @@ export function TerminbuchungDialog({ open, onClose, onSubmit, defaultValues, re
         <Label htmlFor="besondere_wuensche">{fieldLabel('terminbuchung', 'besondere_wuensche')}</Label>
         <Textarea
           id="besondere_wuensche"
-          placeholder="Wünsche oder Hinweise zum Termin"
+          placeholder=""
           value={fields.besondere_wuensche ?? ''}
           onChange={e => setFields(f => ({ ...f, besondere_wuensche: e.target.value }))}
           rows={3}

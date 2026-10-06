@@ -1,7 +1,7 @@
 /**
  * useFreieTermineAnlegenFlow — the plumbing of the flow « Freie Termine anlegen », generated from the plan.
  *
- * Writes `verfuegbare_termine`: asks `datum_uhrzeit`, `stuhl`, `bemerkung`.
+ * Writes `verfuegbare_termine`: asks `stuhl`, `bemerkung`, `datum_uhrzeit`.
  * The hook OWNS: the form(s) with exactly these fields and the plan's required
  * ingredients, one record search per picked field (columns and filter from
  * the plan), and the submit plan with its fixed and derived values. A page
@@ -16,12 +16,12 @@
  *   messages  the sentence for an empty required field, per field
  *
  *   const flow = useFreieTermineAnlegenFlow({
- *     steps: { datum_uhrzeit: 1, stuhl: 1, bemerkung: 1 },
+ *     steps: { stuhl: 1, bemerkung: 1, datum_uhrzeit: 1 },
  *   });
  *   <IntentWizardShell forms={flow.forms} draftKey={flow.draftKey} …>
- *     <Bound form={flow.forms.verfuegbare_termine} name="datum_uhrzeit" />
  *     <Bound form={flow.forms.verfuegbare_termine} name="stuhl" />
  *     <Bound form={flow.forms.verfuegbare_termine} name="bemerkung" />
+ *     <Bound form={flow.forms.verfuegbare_termine} name="datum_uhrzeit" />
  *     <StepNav onNext={() => flow.validateStep(n)} />
  *     {!flow.submit.done && <SummaryStep forms={flow.formList} submit={flow.submit} />}
  *     {flow.submit.result && <SuccessStep result={flow.submit.result} forms={flow.formList} submit={flow.submit} />}
@@ -76,10 +76,10 @@ function hasValues(form: StepForm): boolean {
 export function useFreieTermineAnlegenFlow(options: FreieTermineAnlegenFlowOptions = {}) {
   const steps = { ...DEFAULT_STEPS, ...(options.steps ?? {}) } as Record<string, number>;
   const verfuegbare_termine = useStepForm('verfuegbare_termine', {
-    fields: ["datum_uhrzeit", "stuhl", "bemerkung"],
-    steps: only(steps, ["datum_uhrzeit", "stuhl", "bemerkung"]) as Record<string, number>,
-    initial: only(options.initial as FormValues | undefined, ["datum_uhrzeit", "stuhl", "bemerkung"]),
-    messages: only(options.messages as Record<string, string> | undefined, ["datum_uhrzeit", "stuhl", "bemerkung"]),
+    fields: ["stuhl", "bemerkung", "datum_uhrzeit"],
+    steps: only(steps, ["stuhl", "bemerkung", "datum_uhrzeit"]) as Record<string, number>,
+    initial: only(options.initial as FormValues | undefined, ["stuhl", "bemerkung", "datum_uhrzeit"]),
+    messages: only(options.messages as Record<string, string> | undefined, ["stuhl", "bemerkung", "datum_uhrzeit"]),
   });
   const forms: FreieTermineAnlegenForms = { verfuegbare_termine };
   const formList: StepForm[] = [verfuegbare_termine];

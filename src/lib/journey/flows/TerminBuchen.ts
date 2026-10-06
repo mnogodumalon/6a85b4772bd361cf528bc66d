@@ -1,7 +1,7 @@
 /**
  * useTerminBuchenFlow — the plumbing of the flow « Termin für Kunden buchen », generated from the plan.
  *
- * Writes `terminbuchung`: asks `vorname`, `nachname`, `telefon`, `email`, `termin`, `leistung`, `besondere_wuensche`.
+ * Writes `terminbuchung`: asks `email`, `termin`, `telefon`, `vorname`, `leistung`, `nachname`, `besondere_wuensche`.
  * The hook OWNS: the form(s) with exactly these fields and the plan's required
  * ingredients, one record search per picked field (columns and filter from
  * the plan), and the submit plan with its fixed and derived values. A page
@@ -16,16 +16,16 @@
  *   messages  the sentence for an empty required field, per field
  *
  *   const flow = useTerminBuchenFlow({
- *     steps: { termin: 1, vorname: 2, nachname: 2, telefon: 2, email: 2, leistung: 2, besondere_wuensche: 2 },
+ *     steps: { termin: 1, email: 2, telefon: 2, vorname: 2, leistung: 2, nachname: 2, besondere_wuensche: 2 },
  *     items: { termin: r => ({ id: r.id, title: fieldText(r, 'bemerkung') }) },
  *   });
  *   <IntentWizardShell forms={flow.forms} draftKey={flow.draftKey} …>
  *     <EntitySelectStep {...flow.picks.termin.select} {...flow.pick('termin')} />
- *     <Bound form={flow.forms.terminbuchung} name="vorname" />
- *     <Bound form={flow.forms.terminbuchung} name="nachname" />
- *     <Bound form={flow.forms.terminbuchung} name="telefon" />
  *     <Bound form={flow.forms.terminbuchung} name="email" />
+ *     <Bound form={flow.forms.terminbuchung} name="telefon" />
+ *     <Bound form={flow.forms.terminbuchung} name="vorname" />
  *     <Bound form={flow.forms.terminbuchung} name="leistung" />
+ *     <Bound form={flow.forms.terminbuchung} name="nachname" />
  *     <Bound form={flow.forms.terminbuchung} name="besondere_wuensche" />
  *     <StepNav onNext={() => flow.validateStep(n)} />
  *     {!flow.submit.done && <SummaryStep forms={flow.formList} submit={flow.submit} />}
@@ -92,10 +92,10 @@ function hasValues(form: StepForm): boolean {
 export function useTerminBuchenFlow(options: TerminBuchenFlowOptions = {}) {
   const steps = { ...DEFAULT_STEPS, ...(options.steps ?? {}) } as Record<string, number>;
   const terminbuchung = useStepForm('terminbuchung', {
-    fields: ["vorname", "nachname", "telefon", "email", "termin", "leistung", "besondere_wuensche"],
-    steps: only(steps, ["vorname", "nachname", "telefon", "email", "termin", "leistung", "besondere_wuensche"]) as Record<string, number>,
-    initial: only(options.initial as FormValues | undefined, ["vorname", "nachname", "telefon", "email", "termin", "leistung", "besondere_wuensche"]),
-    messages: only(options.messages as Record<string, string> | undefined, ["vorname", "nachname", "telefon", "email", "termin", "leistung", "besondere_wuensche"]),
+    fields: ["email", "termin", "telefon", "vorname", "leistung", "nachname", "besondere_wuensche"],
+    steps: only(steps, ["email", "termin", "telefon", "vorname", "leistung", "nachname", "besondere_wuensche"]) as Record<string, number>,
+    initial: only(options.initial as FormValues | undefined, ["email", "termin", "telefon", "vorname", "leistung", "nachname", "besondere_wuensche"]),
+    messages: only(options.messages as Record<string, string> | undefined, ["email", "termin", "telefon", "vorname", "leistung", "nachname", "besondere_wuensche"]),
   });
   const forms: TerminBuchenForms = { terminbuchung };
   const formList: StepForm[] = [terminbuchung];
